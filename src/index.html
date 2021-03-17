@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+
+<link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
+
+
+
+
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <meta property="og:image" content="https://projects.seattletimes.com/2020/sports/seattle-sports-moments-bracket/assets/social.jpg" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+
+    <%= t.include("partials/_nav.html") %>
+    <%= t.include("partials/_gtm.html") %>
+
+    <header class="splash">
+
+      <div class="splashImg">
+        <img src="./assets/BiggestMoments-ILLO-web.jpg">
+      </div>
+      <h1>The best Seattle <div>sports&nbsp;moment</div> bracket</h1>
+    </header>
+
+    <main class="bracket">
+      <div class="byline">
+        By Sean Quinton, Rich Boudet and Lauren Flannery | The Seattle Times
+      </div>
+      <div class="byline2">Published June 12, 2020</div>
+
+      <div class="intro">
+        <p>
+          It's been nearly three months since Seattle has seen live sports. Now that we've all had a chance to relive reruns of past
+          games and soak in nothing but sports nostalgia, it's time to put history to the test. Welcome to the March Madness style
+          bracket that will unofficially determine the greatest moment in Seattle sports history. Over the next two weeks, you'll
+          have a chance to cast your vote for your favorite moments to help determine a winner, which will be unveiled Friday, June 26.
+        </p>
+        <p>
+          The 32 moments, determined by Seattle Times sports staffers, have been broken up and seeded in two sets of 16.
+          There are many great moments in Seattle sports history that are not mentioned, but this list is our attempt to narrow
+          the field to the best of the best and is in no way meant to diminish other moments that didn’t make the cut.
+          The moments also primarily reflect recent history (the past 40 years). Below is a schedule for each round. Voting for
+          new rounds will open at 9 a.m. on each day listed below.</p>
+      </div>
+
+      <nav class="choose-round">
+        <ul>
+          <% grunt.data.bracket.rounds.forEach(function(round, i) { %>
+          <li>
+            <input
+              <% if (round.active) { %>
+              checked="checked"
+              <% } %>
+              type="radio"
+              class="a11y-hidden"
+              name="round-selection"
+              value="<%= round.id %>"
+              id="<%= round.id %>"
+              <% if (!round.active && !round.past) { %>
+              disabled="disabled"
+              <% } %>
+            >
+            <label for="<%= round.id %>">
+              <div class="name"><%= round.name %></div>
+              <div class="date"><%= round.dates %></div>
+            </label>
+          <% }) %>
+        </ul>
+      </nav>
+      <div hidden class="svg-templates">
+      </div>
+
+      <div class="actually" aria-live="polite">
+        <div class="selected-matchup constrained" tabindex="-1"></div>
+        <div class="round-matchups constrained2"></div>
+      </div>
+      <div class="burger-fact"></div>
+
+      <%= t.include("partials/_dontMiss.html", { data: json.recirc }) %>
+    </main>
+
+    <%= t.include("partials/_navBottom.html") %>
+
+    <script>
+window.bracketData = <%= JSON.stringify(grunt.data.bracket) %>;
+window.candidateData = <%= JSON.stringify(json.candidates) %>;
+console.log(window.bracketData);
+    </script>
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

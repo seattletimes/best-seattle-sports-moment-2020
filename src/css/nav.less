@@ -1,0 +1,50 @@
+.choose-round {
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  font-family: @df-sans;
+  font-size: 16px;
+
+  ul {
+    list-style-type: none;
+    padding: 0 10px;
+    margin: 0 auto;
+    // max-width: 800px;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    padding: 10px;
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .date {
+    font-size: 15px;
+  }
+
+  input {
+
+    &:checked + label {
+      cursor: pointer;
+
+      .name {
+        color: yellow;
+      }
+    }
+
+    &:disabled + label {
+      .name { color: white }
+      opacity: .6;
+      cursor: normal;
+    }
+  }
+}

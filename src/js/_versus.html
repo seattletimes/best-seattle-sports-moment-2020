@@ -1,0 +1,45 @@
+<% data.options.forEach(function(option) { %>
+<div class="column collapsed">
+
+  <div class="photo-block">
+    <img src="./assets/photos/<%= option.data.photo %>">
+  </div>
+
+  <div class="eachTitle">
+
+  <h2 class="eachName">
+    <%= option.name %>
+  </h2>
+  <div><span class="eachDate"><%= option.data.subhead %></span></div>
+  </div>
+
+  <button class="show-more" aria-hidden="true">More information &raquo;</button>
+
+  <div class="more-container"><div class="more">
+    <ul class="offerings">
+
+    </ul>
+
+    <ul class="description">
+
+      <li class="chatter"> <%= option.data.chatter %></li>
+
+
+      <% if (option.data.Video) { %>
+      <li> <%= option.data.Video %></li>
+      <% } %>
+
+
+    </ul>
+  </div></div>
+
+  <!-- <% if (data.active) { %>
+  <button class="vote" value="<%= option.name %>" data-index="<%= data.index %>">Vote</button>
+  <% } %> -->
+
+  <% if (data.winner == option.name) { %>
+    <div class="winner">&star; Winner &star;</div>
+  <% } %>
+
+</div>
+<% }); %>

@@ -1,0 +1,21 @@
+<h2>Matchups in <%= data.name %>:</h2>
+<ul class="matchups <%= data.past ? "past" : "not-past" %>">
+  <% if (!data.matchups.length) { %>
+  This round isn't open yet--check back later!
+  <% } else data.matchups.forEach(function(item, i) { %>
+  <li>
+    <input
+      type="radio"
+      class="a11y-hidden <%= item.voted || data.past ? "disabled" : "" %>"
+      name="matchup-radio"
+      id="matchup-<%= data.id %>-<%= i %>"
+      value="<%= i %>"
+
+      <%= i ? "" : 'checked="checked"' %>>
+    <label for="matchup-<%= data.id %>-<%= i %>">
+      <% item.options.forEach(function(option) { %>
+      <div class="candidate <%= option.name == item.winner ? "winner" : "" %>"><span class="rank"><%= option.data.rank %>)</span> <%= option.name %></div>
+      <% }); %>
+    </label>
+  <% }); %>
+</ul>

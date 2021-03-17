@@ -1,0 +1,21 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "organized-notion"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "2020/sports/seattle-sports-moments-bracket"
+    }
+  },
+  "title": "Seattle Sports Moment Bracket: Cast your vote for the most iconic moment of Seattle sports",
+  "description": "Cast your vote.",
+  "url": "https://projects.seattletimes.com/2020/sports/seattle-sports-moments-bracket",
+  "image": "assets/social.jpg",
+  "sheets": ["1v0Huc2xnLLjLHKk3iC1mDE6XsDIL_XmJhM2KPkjvp0A"],
+  "endpoint": "https://script.google.com/macros/s/AKfycbyUu9DQ9p1V2RwgO4I_OfqPSh1Qn-YuOp5t4Oez/exec",
+  "standout": false,
+  "embedded": false,
+  "production": true
+}
